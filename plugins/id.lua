@@ -90,7 +90,7 @@ do
   local function run(msg, matches)
     local receiver = get_receiver(msg)
     if is_chat_msg(msg) then
-      if msg.text == '[/!@#?]id' then
+      if msg.text == 'id' then
         if msg.reply_id then
           if is_mod(msg.from.id, msg.to.id) then
             msgr = get_message(msg.reply_id, action_by_reply, {receiver=receiver})
