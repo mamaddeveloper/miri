@@ -166,10 +166,10 @@ return {
   },
   patterns = {
     "^[/!@#?]([Hh]elp)$",
-    "^[/!@#?]([Hh]elp) all",
+    "^[/!@#?]([Hh]elp) (all)",
     "^[/!@#?]([Hh]elp) (.+)",
     "^([Hh]elp)$",
-    "^([Hh]elp) all",
+    "^([Hh]elp) (all)",
     "^([Hh]elp) (.+)"
   },
   run = run
