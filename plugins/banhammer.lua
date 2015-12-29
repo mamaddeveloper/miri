@@ -66,7 +66,7 @@ do
               superban_user(matches[2], chat_id)
               send_large_msg('chat#id'..chat_id, full_name..' ['..matches[2]..'] globally banned!')
             end
-          elseif matches[1] == 'kick' then
+          elseif matches[1] == 'sik' then
             if is_mod(matches[2], chat_id) then
               send_large_msg('chat#id'..chat_id, NO_KICK)
             else
@@ -144,7 +144,7 @@ do
       local user_id = result.id
       local username = result.username
       if is_chat_msg(extra.msg) then
-        if extra.match == 'kick' then
+        if extra.match == 'sik' then
           if is_mod(user_id, chat_id) then
             send_large_msg('chat#id'..chat_id, NO_KICK)
           else
@@ -294,7 +294,7 @@ do
     local user = 'user#id'..(matches[2] or '')
 
     if is_chat_msg(msg) then
-      if matches[1] == 'kickme' then
+      if matches[1] == 'sikme' then
         if is_mod(msg.from.id, msg.to.id) then
           send_large_msg('chat#id'..msg.to.id, NO_KICK)
         else
@@ -302,7 +302,7 @@ do
         end
       end
       if is_mod(msg.from.id, msg.to.id) then
-        if matches[1] == 'kick' then
+        if matches[1] == 'sik' then
           if msg.reply_id then
             msgr = get_message(msg.reply_id, action_by_reply, {msg=msg, match=matches[1]})
           elseif string.match(matches[2], '^%d+$') then
@@ -341,22 +341,22 @@ do
               settings.anti_flood = 'kick'
               save_data(_config.moderation.data, data)
             end
-              return 'Anti flood and spam protection already enabled.\nOffender will be kicked.'
+              return 'Anti Spam Faal Shod!\nSpamer Kick Khahad Shod!'
             end
           if matches[2] == 'ban' then
             if settings.anti_flood ~= 'ban' then
               settings.anti_flood = 'ban'
               save_data(_config.moderation.data, data)
             end
-              return 'Anti flood and spam protection already enabled.\nOffender will be banned.'
+              return 'Anti Spam Faal Shod!\nSpammer Ban Khahad Shod!'
             end
           if matches[2] == 'disable' then
             if settings.anti_flood == 'no' then
-              return 'Anti flood and spam protection is not enabled.'
+              return 'Anti Spam Faal Nist!'
             else
               settings.anti_flood = 'no'
               save_data(_config.moderation.data, data)
-              return 'Anti flood and spam protection has been disabled.'
+              return 'Anti Spam Gheyre Faal Shod!'
             end
           end
         end
@@ -444,28 +444,50 @@ do
       },
     },
     patterns = {
-      '^!(antispam) (.*)$',
-      '^!(ban) (.*)$',
-      '^!(ban)$',
-      '^!(banlist)$',
-      '^!(unban) (.*)$',
-      '^!(unban)$',
-      '^!(kick) (.+)$',
-      '^!(kick)$',
-      '^!(kickme)$',
+      '^[/!@#?]([Aa]ntispam) (.*)$',
+      '^[/!@#?]([Bb]an) (.*)$',
+      '^[/!@#?]([Bb]an)$',
+      '^[/!@#?]([Bb]anlist)$',
+      '^[/!@#?]([Uu]nban) (.*)$',
+      '^[/!@#?]([Uu]nban)$',
+      '^[/!@#?]([Ss]ik) (.+)$',
+      '^[/!@#?]([Ss]ik)$',
+      '^[/!@#?]([Ss]ikme)$',
       '^!!tgservice (.+)$',
-      '^!(whitelist)$',
-      '^!(whitelist) (chat)$',
-      '^!(whitelist) (delete) (chat)$',
-      '^!(whitelist) (delete) (user) (%d+)$',
-      '^!(whitelist) (disable)$',
-      '^!(whitelist) (enable)$',
-      '^!(whitelist) (user) (%d+)$',
-      '^!(unwhitelist)$',
-      '^!(superban)$',
-      '^!(superban) (.*)$',
-      '^!(superunban)$',
-      '^!(superunban) (.*)$'
+      '^[/!@#?]([Ww]hitelist)$',
+      '^[/!@#?]([Ww]hitelist) (chat)$',
+      '^[/!@#?]([Ww]hitelist) (delete) (chat)$',
+      '^[/!@#?]([Ww]hitelist) (delete) (user) (%d+)$',
+      '^[/!@#?]([Ww]hitelist) (disable)$',
+      '^[/!@#?]([Ww]hitelist) (enable)$',
+      '^[/!@#?]([Ww]hitelist) (user) (%d+)$',
+      '^[/!@#?]([Uu]nwhitelist)$',
+      '^[/!@#?]([Ss]uperban)$',
+      '^[/!@#?]([Ss]uperban) (.*)$',
+      '^[/!@#?]([Ss]uperunban)$',
+      '^[/!@#?]([Ss]uperunban) (.*)$',
+      '^([Aa]ntispam) (.*)$',
+      '^([Bb]an) (.*)$',
+      '^([Bb]an)$',
+      '^([Bb]anlist)$',
+      '^([Uu]nban) (.*)$',
+      '^([Uu]nban)$',
+      '^([Ss]ik) (.+)$',
+      '^([Ss]ik)$',
+      '^([Ss]ikme)$',
+      '^!!tgservice (.+)$',
+      '^([Ww]hitelist)$',
+      '^([Ww]hitelist) (chat)$',
+      '^([Ww]hitelist) (delete) (chat)$',
+      '^([Ww]hitelist) (delete) (user) (%d+)$',
+      '^([Ww]hitelist) (disable)$',
+      '^([Ww]hitelist) (enable)$',
+      '^([Ww]hitelist) (user) (%d+)$',
+      '^([Uu]nwhitelist)$',
+      '^([Ss]uperban)$',
+      '^([Ss]uperban) (.*)$',
+      '^([Ss]uperunban)$',
+      '^([Ss]uperunban) (.*)$'
     },
     run = run,
     pre_process = pre_process
