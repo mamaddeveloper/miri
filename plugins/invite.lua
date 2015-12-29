@@ -71,9 +71,9 @@ do
       },
     },
     patterns = {
-      '^[/!@#?][Ii]nvite$',
-      '^[/!@#?][Ii]nvite (.*)$',
-      '^[/!@#?][Ii]nvite (%d+)$',
+      '^[/!@#?]([Ii]nvite)$',
+      '^[/!@#?]([Ii]nvite) (.*)$',
+      '^[/!@#?]([Ii]nvite) (%d+)$',
       '^([Ii]nvite)$',
       '^([Ii]nvite) (.*)$',
       '^([Ii]nvite) (%d+)$'
