@@ -101,7 +101,7 @@ do
     local user_id = result.from.id
     local full_name = (result.from.first_name or '')..' '..(result.from.last_name or '')
     if is_chat_msg(result) then
-      if extra.match == 'kick' then
+      if extra.match == 'sik' then
         if is_mod(user_id, chat_id) then
           send_large_msg('chat#id'..chat_id, NO_KICK)
         else
@@ -182,7 +182,7 @@ do
   local function trigger_anti_splooder(user_id, chat_id, splooder)
     local data = load_data(_config.moderation.data)
     local anti_spam_stat = data[tostring(chat_id)]['settings']['anti_flood']
-    if anti_spam_stat == 'kick' then
+    if anti_spam_stat == 'sik' then
       kick_user(user_id, chat_id)
       send_large_msg('chat#id'..chat_id, 'User '..user_id..' is '..splooder)
     elseif anti_spam_stat == 'ban' then
@@ -336,9 +336,9 @@ do
         if matches[1] == 'antispam' then
           local data = load_data(_config.moderation.data)
           local settings = data[tostring(msg.to.id)]['settings']
-          if matches[2] == 'kick' then
-            if settings.anti_flood ~= 'kick' then
-              settings.anti_flood = 'kick'
+          if matches[2] == 'sik' then
+            if settings.anti_flood ~= 'sik' then
+              settings.anti_flood = 'sik'
               save_data(_config.moderation.data, data)
             end
               return 'Anti Spam Faal Shod!\nSpamer Kick Khahad Shod!'
