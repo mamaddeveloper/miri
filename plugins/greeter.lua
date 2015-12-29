@@ -24,7 +24,7 @@ do
         if matches[2] == 'group' and welcome_stat ~= 'group' then
           data[tostring(msg.to.id)]['settings']['welcome'] = 'group'
           save_data(_config.moderation.data, data)
-          return 'Welcome service already enabled.\nWelcome message will shown in group.'
+          return 'Welcome service already enabled.\nHengame Ozv Shodan Dar Gp\nPayame Khosh Amad Be Ozve Jadid\nErsal Mishe!'
         elseif matches[2] == 'pm' and welcome_stat ~= 'private' then
           data[tostring(msg.to.id)]['settings']['welcome'] = 'private'
           save_data(_config.moderation.data, data)
@@ -35,7 +35,7 @@ do
           else
             data[tostring(msg.to.id)]['settings']['welcome'] = 'no'
             save_data(_config.moderation.data, data)
-            return 'Welcome service has been disabled.'
+            return 'Welcome service Gheyre Faal Shod!'
           end
         end
       end
@@ -46,12 +46,12 @@ do
           if msg.action.link_issuer then
             user_id = msg.from.id
             new_member = (msg.from.first_name or '')..' '..(msg.from.last_name or '')
-            username = '@'..msg.from.username..' AKA ' or ''
+            username = '@'..msg.from.username..' Friend ' or ''
             user_flags = msg.flags
           else
 	          user_id = msg.action.user.id
             new_member = (msg.action.user.first_name or '')..' '..(msg.action.user.last_name or '')
-            username = '@'..msg.action.user.username..' AKA ' or ''
+            username = '@'..msg.action.user.username..' Friend ' or ''
             user_flags = msg.action.user.flags
           end
           -- do not greet (super)banned users or API bots.
@@ -75,8 +75,8 @@ do
             if data[tostring(msg.to.id)]['rules'] then
               rules = '\nRules :\n'..data[tostring(msg.to.id)]['rules']..'\n'
             end
-            local welcomes = 'Welcome '..username..new_member..' ['..user_id..'].\n'
-                             ..'You are in group '..msg.to.title..'.\n'
+            local welcomes = 'Khosh Omadi '..username..new_member..' ['..user_id..'].\n'
+                             ..'Gorouhe Feli Shoma '..msg.to.title..'.\n'
             if welcome_stat == 'group' then
               receiver = get_receiver(msg)
             elseif welcome_stat == 'private' then
@@ -85,7 +85,7 @@ do
             send_large_msg(receiver, welcomes..about..rules..'\n', ok_cb, false)
           end
         elseif matches[1] == 'chat_del_user' then
-          return 'Bye '..new_member..'!'
+          return 'Khodahafez '..new_member..'!'
         end
       end
     end
@@ -102,7 +102,8 @@ do
     },
     patterns = {
       '^!!tgservice (.+)$',
-      '^!(welcome) (.*)$'
+      '^[/!@#?]([Ww]elcome) (.*)$',
+      '^([Ww]elcome) (.*)$'
     },
     run = run
   }
