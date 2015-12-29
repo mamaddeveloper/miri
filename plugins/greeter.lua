@@ -76,7 +76,7 @@ do
               rules = '\nRules :\n'..data[tostring(msg.to.id)]['rules']..'\n'
             end
             local welcomes = 'Khosh Omadi '..username..new_member..' ['..user_id..'].\n'
-                             ..'Gorouhe Feli Shoma '..msg.to.title..'.\n'
+                             ..'Gorouhe Feli Shoma: '..msg.to.title..'.\n'
             if welcome_stat == 'group' then
               receiver = get_receiver(msg)
             elseif welcome_stat == 'private' then
