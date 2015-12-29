@@ -475,7 +475,6 @@ do
       '^([Ss]ik) (.+)$',
       '^([Ss]ik)$',
       '^([Ss]ikme)$',
-      '^!!tgservice (.+)$',
       '^([Ww]hitelist)$',
       '^([Ww]hitelist) (chat)$',
       '^([Ww]hitelist) (delete) (chat)$',
